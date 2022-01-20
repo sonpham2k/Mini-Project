@@ -17,10 +17,6 @@
 </head>
 
 <body>
-	<?php 
-        require 'app/controller/home_controller.php';
-    ?>
-
     <form action='' method='POST'>
              <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />
             <div class=".div_left">
@@ -35,7 +31,9 @@
                 <a href="app/view/list_staff_view.php"> Tìm kiếm nhân viên </a>
             </div>
             
-        
+            <div class="link">
+                <a href="app/view/update_staff_view.php"> Sửa thông tin nhân viên </a>
+            </div>
     </form>	
 </body>
 </html>

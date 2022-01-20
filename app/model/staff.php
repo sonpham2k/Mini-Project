@@ -68,7 +68,7 @@
 	function updateNV($maNV, $tenNV, $queNV, $maPB){
 		require '../common/connectDB.php';
 
-		$sqlUpdate = "UPDATE `nhanvien` SET `TenNV`='$tenNV',`QueQuan`='queNV',`MaPB`='maPB' WHERE MaNV = '$maNV'";
+		$sqlUpdate = "UPDATE `nhanvien` SET `TenNV`='$tenNV',`QueQuan`='$queNV',`MaPB`='$maPB' WHERE MaNV = '$maNV'";
 		$update = $conn -> prepare($sqlUpdate);
 		$update -> execute();
 	}

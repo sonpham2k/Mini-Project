@@ -1,13 +1,10 @@
 <?php 
 	require '../model/staff.php';
-	require '../model/classrooms.php';
 
 	$name = $address = $class = "";
 	$resultSearchStaff = "";
 	$numLast = "";
-	$check = "";
-	$idUpdate = $nameUpdate = $addressUpdate = $classUpdate = "";
-
+	
 	//check login
 	session_start();
     if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
@@ -38,21 +35,5 @@
 		}
 	}
 
-	// for($i=0; $i <= $numLast; $i++){
-	// 	if(isset($_POST['update'.$i])){
-	// 		$idUpdate = $resultSearchStaff[$i]->MaNV;
-	// 		$nameUpdate = $resultSearchStaff[$i]->TenNV;
-	// 		$addressUpdate = $resultSearchStaff[$i]->QueQuan;
-	// 		$classUpdate = $resultSearchStaff[$i]->TenPB;
-	// 		header('location: update_staff_view.php');
-	// 	}
-	// }
-
-	if (isset($_POST['btn-update'])) {
-		$idUpdate = $_POST['id_update'];
-		$nameUpdate = $_POST['name_update'];
-		$addressUpdate = $_POST['address_update'];
-		$classUpdate = $_POST['class_update'];
-		updateNV($idUpdate, $nameUpdate, $addressUpdate, $classUpdate);
-	}
+	
 ?>
