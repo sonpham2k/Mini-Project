@@ -6,6 +6,7 @@
 	$idUpdateErr = $nameUpdateErr = $addressUpdateErr = $classUpdateErr = $accept = "";
 	$idUpdate = $nameUpdate = $addressUpdate = $classUpdate = "";
 	$check = "";
+	$number = $info = "";
 	$acceptUpdate = true;
 
 	//Check Login
@@ -14,14 +15,24 @@
         header("Location:../../login.php");
     }
 
+    //Lấy mã nhân viên cần sửa
+    if(isset($_GET['num'])){
+    	$number = $_GET['num'];
+    }
+
+    //Trả về kết quả truy vấn tìm nhân viên cần sửa
+    $updateStaffOne = giveStaff($number);
+
     //Nút sửa thông tin nhân viên
 	if (isset($_POST['btn-update'])) {
+		
 		if(empty($_POST['id_update'])){
 			$idUpdateErr = "Hãy nhập mã nhân viên";
 			$acceptUpdate = false;
 		} else {
 			$idUpdate = $_POST['id_update'];
 		}
+
 		
 		if(empty($_POST['name_update'])){
 			$nameUpdateErr = "Hãy nhập tên nhân viên";
@@ -49,6 +60,5 @@
 			$accept = "Sửa thành công";
 		}
 		
-
 	}
 ?>

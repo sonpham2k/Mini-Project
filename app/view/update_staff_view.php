@@ -11,7 +11,7 @@
 <body>
 	<?php 
 		require '../controller/update_staff_controller.php'; 
-        // echo $check; 
+
 	?>
 	<button class="custombackHome">
         <a style="text-decoration: none" href="../../home.php">
@@ -24,8 +24,9 @@
             <!-- Nhập mã nhân viên -->
             <div>
                 <label class="name-add">Mã nhân viên </label>
+                
                 <!-- <label type="text" class="name-input-label" name="id_update"> </label> -->
-                <input type="text" class="name-input" name="id_update" size="30" />
+                <input type="text" class="name-input" name="id_update" size="30" value="<?php echo $updateStaffOne[0]->MaNV; ?>" />
             </div> 
 
             <!-- Validate mã nhân viên  -->
@@ -36,7 +37,7 @@
         	<!-- Nhập tên nhân viên  -->
            	<div>
                 <label class="name-add">Tên nhân viên </label>
-                <input type="text" class="name-input" name="name_update" size="30" />
+                <input type="text" class="name-input" name="name_update" size="30" value="<?php echo $updateStaffOne[0]->TenNV; ?>"/>
             </div>
 
             <!-- Validate tên nhân viên  -->
@@ -47,7 +48,7 @@
             <!-- Nhập quê quán nhân viên  -->
             <div>
                 <label class="address-add"> Quê quán </label>
-                <input type="text" class="address-input" name="address_update" size="30" />
+                <input type="text" class="address-input" name="address_update" size="30" value="<?php echo $updateStaffOne[0]->QueQuan; ?>"/>
             </div>
             
             <!-- Validate quê nhân viên  -->
@@ -58,8 +59,8 @@
             <!-- Nhập phòng ban nhân viên  -->
             <div>
                 <label class="class-add"> Phòng ban </label>
-               <select class="select-nameClass" name="class_update" value = >
-                    <option></option>
+               <select class="select-nameClass" name="class_update">
+                    <option value = "<?php echo $updateStaffOne[0]->MaPB;?>"><?php echo $updateStaffOne[0]->TenPB; ?></option>
                     <?php 
                         $result = listClass();
                         for ($i = 0; $i <  count($result); $i++){

@@ -32,6 +32,11 @@
             </div>
 
             <div>
+                <input type = "checkbox" class = "check" name = "remember"/>
+                <label class = "remember"> Remember me </label>
+
+            </div>
+            <div>
                    <input type="submit" class="btn-login" value="Đăng nhập" name="btn-login">
             </div>
         

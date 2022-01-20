@@ -11,8 +11,7 @@
 <body>
 	<?php 
 		require '../controller/list_staff_controller.php';
-
-
+        
 	?>
 	<button class="custombackHome">
         <a style="text-decoration: none" href="../../home.php">

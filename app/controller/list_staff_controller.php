@@ -1,10 +1,13 @@
 <?php 
 	require '../model/staff.php';
+	require '../model/classrooms.php';
+
 
 	$name = $address = $class = "";
 	$resultSearchStaff = "";
 	$numLast = "";
-	
+	$check = "";
+
 	//check login
 	session_start();
     if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
@@ -35,5 +38,12 @@
 		}
 	}
 
+	//Chuyển sang màn sửa thông tin nhân viên
+	for($i=0; $i <= $numLast; $i++){
+		if(isset($_POST['update'.$i])){
+			header('location: update_staff_view.php?num='.$i.'');
+
+		}
+	}
 	
 ?>

@@ -52,6 +52,19 @@
 		$Delete -> execute();
 	}
 
+	function giveStaff($maNV){
+
+		require '../common/connectDB.php';
+
+		$sqlGive = "SELECT nhanvien.MaNV, nhanvien.TenNV ,nhanvien.QueQuan, phongban.TenPB, phongban.MaPB FROM `nhanvien`CROSS JOIN phongban ON nhanvien.MaPB = phongban.MaPB WHERE MaNV = '$maNV'";
+		$Give = $conn -> prepare($sqlGive);
+		$Give -> execute();
+
+		$resultGive = $Give->fetchAll(PDO::FETCH_OBJ);
+
+		return $resultGive;
+	}
+
 	function lastMaNV(){
 
 		require '../common/connectDB.php';
