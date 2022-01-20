@@ -42,7 +42,7 @@ div {
 }
 
 .div_left {
-    text-align: left;
+    float: left;
     margin: 20px;
 }
 
@@ -70,4 +70,12 @@ div {
 .link {
 
     margin-top: 20px;
+}
+
+.alignright {
+    float: right;
+    width: 100px;
+    height: 30px;
+    background-color: #4f81bd;
+    font-size: 1rem;
 }
