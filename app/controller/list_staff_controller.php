@@ -11,10 +11,10 @@ class listStaff{
 		
 
 		//check login
-		// session_start();
-	 //    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-	 //        header("Location:../../login.php");
-	 //    }
+		
+	    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	        header("Location:../../login.php");
+	    }
 
 	    //Tìm kiếm thông tin
 		if(isset($_REQUEST['btn_search'])){

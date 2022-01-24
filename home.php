@@ -1,11 +1,3 @@
-
-<?php
-    session_start();
-    require_once 'app/controller/home_controller.php';
-    // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-    //     header("Location:login.php");
-    // }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +9,16 @@
 </head>
 
 <body>
+    <?php
+    require_once 'app/controller/home_controller.php';
+    echo $_SESSION['demo'];
+    ?>
     <form action='' method='POST'>
              <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />
             <div class=".div_left">
-                <label class="userid_home">Tên đăng nhập: <?php echo $_COOKIE['user']; ?> </label>
+                <label class="userid_home">Tên đăng nhập: <?php 
+                // echo $_COOKIE['user']; 
+            ?> </label>
             </div>
 
             <div class="link">

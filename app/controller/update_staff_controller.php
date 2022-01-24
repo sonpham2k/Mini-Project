@@ -12,10 +12,9 @@ class updateStaff{
 		$acceptUpdate = true;
 
 		//Check Login
-		// session_start();
-	 //    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-	 //        header("Location:../../login.php");
-	 //    }
+	    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	        header("Location:../../login.php");
+	    }
 
 	    //Lấy mã nhân viên cần sửa
 	    if(isset($_GET['num'])){

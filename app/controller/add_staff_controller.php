@@ -9,9 +9,9 @@ class addStaff{
 
 		//Check login
 	    
-	    // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-	    //     header("Location:../../login.php");
-	    // }
+	    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	        header("Location:../../login.php");
+	    }
 		
 		//Nút thêm nhân viên
 		if(isset($_REQUEST['btn-add'])){

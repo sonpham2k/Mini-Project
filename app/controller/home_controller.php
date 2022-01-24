@@ -3,18 +3,20 @@
 class homeControl{
         
     public function __construct(){
-
-        // require_once 'app/model/logins.php';
-
+        $_SESSION['demo']="123";
         if (isset($_REQUEST['logoutAction'])) {
-            $_SESSION['loggedin'] = false;
-            header("Location:login.php");
-
+            // $_SESSION['loggedin'] = false;
+            // header("Location:login.php");
+            // $_SESSION['demo']="123";
         }
+
+        // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+        //     header("Location:login.php");
+        // }
     }
 }
 
 $homeControl = new homeControl;
-require_once '../../home.php';
+// require_once '../../home.php';
 
 ?>

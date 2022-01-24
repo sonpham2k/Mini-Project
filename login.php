@@ -9,8 +9,7 @@
 <body>
 	<body>
         <?php 
-            // session_start();
-            
+            require_once 'app/controller/login_admins_controller.php';      
         ?>
     <form action='' method='POST'>
         
@@ -25,7 +24,7 @@
             </div>
 
             <div>
-                <span class="error"><?php echo $nameErr; ?></span>
+                <span class="error"><?php echo $_SESSION['nameErr']; ?></span>
             </div>
             <div>
                 <label class="password">Mật khẩu </label>
@@ -37,7 +36,7 @@
             </div>
             
             <div>
-                <span class="error"><?php echo $passwordErr; ?></span>
+                <span class="error"><?php echo $_SESSION['passwordErr']; ?></span>
             </div>
 
             <div>
