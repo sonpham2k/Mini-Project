@@ -1,46 +1,52 @@
 <?php 
-	require '../model/staff.php';
-	require '../model/classrooms.php';
 
-	$nameErr = $addressErr = $classErr = $addInfo = "";
-	$name = $address = $class = "";
-	$acceptAdd = true;
+class addStaff{
+	public function __construct(){
+		$_SESSION['nameErr'] = $_SESSION['addressErr'] = $_SESSION['classErr'] = "";
+		$name = $address = $class = "";
+		$_SESSION['addinfo'] ="";
+		$acceptAdd = true;
 
-	//Check login
-    session_start();
-    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-        header("Location:../../login.php");
-    }
-	
-	//Nút thêm nhân viên
-	if(isset($_POST['btn-add'])){
+		//Check login
+	    
+	    // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	    //     header("Location:../../login.php");
+	    // }
+		
+		//Nút thêm nhân viên
+		if(isset($_REQUEST['btn-add'])){
 
-		if(empty($_POST['name_input'])){
-			$nameErr = "Hãy nhập tên nhân viên";
-			$acceptAdd = false;
-		} else {
-			$name = $_POST['name_input'];
-		}
+			if(empty($_REQUEST['name_input'])){
+				$_SESSION['nameErr'] = "Hãy nhập tên nhân viên";
+				$acceptAdd = false;
+			} else {
+				$name = $_REQUEST['name_input'];
+			}
 
-		if(empty($_POST['address_add'])){
-			$addressErr = "Hãy nhập quê quán nhân viên";
-			$acceptAdd = false;
-		} else {
-			$address = $_POST['address_add'];
-		}
+			if(empty($_REQUEST['address_add'])){
+				$_SESSION['addressErr'] = "Hãy nhập quê quán nhân viên";
+				$acceptAdd = false;
+			} else {
+				$address = $_REQUEST['address_add'];
+			}
 
-		if(empty($_POST['name_Class'])){
-			$classErr = "Hãy nhập chọn phòng ban";
-			$acceptAdd = false;
-		} else {
-			$class = $_POST['name_Class'];
-		}
+			if(empty($_REQUEST['name_Class'])){
+				$_SESSION['classErr'] = "Hãy nhập chọn phòng ban";
+				$acceptAdd = false;
+			} else {
+				$class = $_REQUEST['name_Class'];
+			}
 
-		if($acceptAdd){
-			addStaff($name, $address, $class);
-			$addInfo = "Thêm thành công";
+			if($acceptAdd){
+				require_once '../model/staff.php';
+				$staff->addStaff($name, $address, $class);
+				$_SESSION['addinfo'] = "Thêm thành công";
+			}
 		}
 	}
-	
+}
+
+$addStaff = new addStaff;
+require_once '../view/add_staff_view.php';
 
 ?>

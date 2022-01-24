@@ -1,17 +1,18 @@
 <?php 
 	
-	function listClass(){
-		global $conn;
-		require '../common/connectDB.php';
+require_once '../common/connectDB.php';
+
+class classrooms extends database{
+
+	public function listClass(){
+		
 		$sqlClass = 'SELECT * FROM `phongban`';
-	    $listClass = $conn ->query($sqlClass);
-	    $listClass -> execute();
-	
-		$result = $listClass->fetchAll(PDO::FETCH_OBJ);
-
-		return $result;
+	    $listClass = $this->__conn ->query($sqlClass);
+	    
+		return $listClass;
 	}
+}
 
-	
+$classrooms = new classrooms();
 
 ?>

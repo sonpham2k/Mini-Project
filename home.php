@@ -1,10 +1,10 @@
 
 <?php
     session_start();
-    require 'app/controller/home_controller.php';
-    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-        header("Location:login.php");
-    }
+    require_once 'app/controller/home_controller.php';
+    // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+    //     header("Location:login.php");
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">

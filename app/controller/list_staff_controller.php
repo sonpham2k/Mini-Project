@@ -1,49 +1,62 @@
 <?php 
-	require '../model/staff.php';
-	require '../model/classrooms.php';
 
+class listStaff{
 
-	$name = $address = $class = "";
-	$resultSearchStaff = "";
-	$numLast = "";
-	$check = "";
+	public function __construct(){
 
-	//check login
-	session_start();
-    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-        header("Location:../../login.php");
-    }
+		$name = $address = $class = "";
+		
+		$_SESSION['count']="";
+		$resultSearchStaff ="";
+		
 
-    //Tìm kiếm thông tin
-	if(isset($_POST['btn_search'])){
+		//check login
+		// session_start();
+	 //    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	 //        header("Location:../../login.php");
+	 //    }
 
-		$name = $_POST['name_search'];
-		$address = $_POST['address_search'];
-		$class = $_POST['class_search'];
+	    //Tìm kiếm thông tin
+		if(isset($_REQUEST['btn_search'])){
 
-	}
+			$name = $_REQUEST['name_search'];
+			$address = $_REQUEST['address_search'];
+			$class = $_REQUEST['class_search'];
+		}
 
-	//Phương thức trả về kế quả tìm kiếm
-	$resultSearchStaff = searchStaff($name, $address, $class);
+		require_once '../model/staff.php';
+		$_SESSION['resultSearch'] = $staff->searchStaff($name, $address, $class);
+		
 
-	//Trả về mã nhân viên lớn nhất
-	$lastMa = lastMaNV();
-	$numLast = $lastMa[0]->MaNV;
+		//Trả về mã nhân viên lớn nhất
 
-	//Xóa nhân viên
-	for($i=0; $i <= $numLast; $i++){
-		if(isset($_POST['delete'.$i])){
-			deleteStaff($i);
-			header('location: list_staff_view.php');
+		$lastMa = $staff->lastMaNV();
+		foreach($lastMa as $rom){
+			$numlast = $rom['MaNV'];
+		}
+
+		// $_SESSION['count'] = $numlast;
+
+		//Xóa nhân viên
+		for($i=0; $i <= $numlast; $i++){
+			if(isset($_REQUEST['delete'.$i])){
+				require_once '../model/staff.php';
+				$staff->deleteStaff($i);
+				header('location: list_staff_view.php');
+			}
+		}
+		
+		//Chuyển sang màn sửa thông tin nhân viên
+		for($i=0; $i <= $numlast; $i++){
+			if(isset($_REQUEST['update'.$i])){
+				header('location: update_staff_view.php?num='.$i.'');
+
+			}
 		}
 	}
+}
 
-	//Chuyển sang màn sửa thông tin nhân viên
-	for($i=0; $i <= $numLast; $i++){
-		if(isset($_POST['update'.$i])){
-			header('location: update_staff_view.php?num='.$i.'');
-
-		}
-	}
+$listStaff = new listStaff;
+require_once '../view/list_staff_view.php';
 	
 ?>

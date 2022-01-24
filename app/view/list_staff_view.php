@@ -10,7 +10,8 @@
 </head>
 <body>
 	<?php 
-		require '../controller/list_staff_controller.php';
+        require_once '../model/classrooms.php';
+		require_once '../controller/list_staff_controller.php';
         
 	?>
 	<button class="custombackHome">
@@ -37,13 +38,15 @@
             <div>
                 <label class="class-add"> Phòng ban </label>
                 <select class="select-nameClass" name="class_search">
+                    
                     <option></option>
                     <?php 
-
-                        $result = listClass();
-                        for ($i = 0; $i <  count($result); $i++){
+                        
+                        $result = $classrooms->listClass();
+                        foreach ($result as $row) {
+                            
                      ?>
-                    <option><?php echo $result[$i]->TenPB; ?></option>
+                    <option value="<?php echo $row['TenPB']; ?>"><?php echo $row['TenPB']; ?></option>
 
                     <?php 
                         }
@@ -57,8 +60,9 @@
             </div>
 
             <!-- Đếm số thiết bị tìm thấy  -->
+            <?php $resultSearch = $_SESSION['resultSearch']; ?>
             <div class="count">
-            	Số thiết bị tìm thấy: <?php echo count($resultSearchStaff); ?>
+            	Số thiết bị tìm thấy: <?php echo $_SESSION['count']; ?>
 
         	</div>
 
@@ -73,16 +77,16 @@
                 </tr>
 
                 <?php
-                    for($i=0 ; $i < count($resultSearchStaff); $i++){    
+                    foreach ($resultSearch as $row) {    
                 ?>
                 <tr>
-                    <td><?php echo $resultSearchStaff[$i]->MaNV; ?></td>
-                    <td><?php echo $resultSearchStaff[$i]->TenNV; ?></td>
-                    <td><?php echo $resultSearchStaff[$i]->QueQuan; ?></td>
-                    <td><?php echo $resultSearchStaff[$i]->TenPB; ?></td>
+                    <td><?php echo $row['MaNV']; ?></td>
+                    <td><?php echo $row['TenNV']; ?></td>
+                    <td><?php echo $row['QueQuan']; ?></td>
+                    <td><?php echo $row['TenPB']; ?></td>
                     <td>
-                        <input type="submit" name="update<?php echo $resultSearchStaff[$i]->MaNV ?>" value="Sửa" class = "UandD">
-                        <input type="submit" name="delete<?php echo $resultSearchStaff[$i]->MaNV ?>" value="Xóa" class = "UandD">
+                        <input type="submit" name="update<?php echo  $row['MaNV']; ?>" value="Sửa" class = "UandD">
+                        <input type="submit" name="delete<?php echo $row['MaNV']; ?>" value="Xóa" class = "UandD">
                     </td>
                 </tr>
                 <?php

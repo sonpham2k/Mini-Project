@@ -1,17 +1,18 @@
 <?php 
 	
-	function addStaff($name, $address, $class){
-		
-		require '../common/connectDB.php';
+require_once '../common/connectDB.php';
+
+class staff extends database{
+
+	public function addStaff($name, $address, $class){
 
 		$sqlAddStaff = "INSERT INTO `nhanvien`(`MaNV`, `TenNV`, `QueQuan`, `MaPB`) VALUES (null,'$name','$address','$class')";
-	    $addStaff = $conn->prepare($sqlAddStaff);
-	    $addStaff -> execute();
+		$addStaff = $this->__conn->query($sqlAddStaff);
+	    
 	}
 
-	function searchStaff($name, $address, $class){
+	public function searchStaff($name, $address, $class){
 
-		require '../common/connectDB.php';
 
 		$sqlSearch = "SELECT nhanvien.MaNV, nhanvien.TenNV ,nhanvien.QueQuan, phongban.TenPB FROM `nhanvien`CROSS JOIN phongban ON nhanvien.MaPB = phongban.MaPB ";
 		if($name == '' && $address == '' && $class == ''){
@@ -35,54 +36,38 @@
 		$order = "ORDER BY nhanvien.MaNV";
 		$sqlSearch2 .= $order;
 		$sqlSearch .= $sqlSearch2;
-		$search = $conn -> prepare($sqlSearch);
-		$search -> execute();
-
-		$resultSearch = $search->fetchAll(PDO::FETCH_OBJ);
-
-		return $resultSearch;
+		
+		return $this->__conn -> query($sqlSearch);
 	}
 
-	function deleteStaff($maNV){
-
-		require '../common/connectDB.php';
+	public function deleteStaff($maNV){
 
 		$sqlDelete = "DELETE FROM `nhanvien` WHERE MaNV = '$maNV'";
-		$Delete = $conn -> prepare($sqlDelete);
-		$Delete -> execute();
+		$delete = $this->__conn -> query($sqlDelete);
+		
 	}
 
-	function giveStaff($maNV){
-
-		require '../common/connectDB.php';
+	public function giveStaff($maNV){
 
 		$sqlGive = "SELECT nhanvien.MaNV, nhanvien.TenNV ,nhanvien.QueQuan, phongban.TenPB, phongban.MaPB FROM `nhanvien`CROSS JOIN phongban ON nhanvien.MaPB = phongban.MaPB WHERE MaNV = '$maNV'";
-		$Give = $conn -> prepare($sqlGive);
-		$Give -> execute();
-
-		$resultGive = $Give->fetchAll(PDO::FETCH_OBJ);
-
-		return $resultGive;
+		return $this->__conn -> query($sqlGive);
 	}
 
-	function lastMaNV(){
-
-		require '../common/connectDB.php';
+	public function lastMaNV(){
 
 		$sqlLast = "SELECT `MaNV` FROM `nhanvien` ORDER BY `MaNV` DESC LIMIT 1";
-		$Last = $conn -> query($sqlLast);
-		$Last -> execute();
-
-		$resultLast = $Last->fetchAll(PDO::FETCH_OBJ);
-
-		return $resultLast;
+		return $this->__conn -> query($sqlLast);
+		
 	}
 
-	function updateNV($maNV, $tenNV, $queNV, $maPB){
-		require '../common/connectDB.php';
+	public function updateNV($maNV, $tenNV, $queNV, $maPB){
 
 		$sqlUpdate = "UPDATE `nhanvien` SET `TenNV`='$tenNV',`QueQuan`='$queNV',`MaPB`='$maPB' WHERE MaNV = '$maNV'";
-		$update = $conn -> prepare($sqlUpdate);
-		$update -> execute();
+		$update = $this->__conn -> query($sqlUpdate);
+		
 	}
+}
+
+$staff = new staff;
+
 ?>

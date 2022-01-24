@@ -9,8 +9,8 @@
 <body>
 	<body>
         <?php 
-            session_start();
-            require 'app/controller/login_admins_controller.php';
+            // session_start();
+            
         ?>
     <form action='' method='POST'>
         

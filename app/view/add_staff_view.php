@@ -9,9 +9,11 @@
 
 </head>
 <body>
-	<?php 
-		require '../controller/add_staff_controller.php';
-	?>
+
+	<?php    
+        require_once '../model/classrooms.php'; 
+        require_once '../controller/add_staff_controller.php';
+    ?>
 	<button class="custombackHome">
         <a style="text-decoration: none" href="../../home.php">
             <img src="https://img.icons8.com/material-outlined/24/FFFFFF/home--v2.png" />
@@ -28,7 +30,7 @@
 
             <!-- Validate nhân viên  -->
             <div>
-            	<span class="error"><?php echo $nameErr; ?></span> 
+            	<span class="error"><?php echo $_SESSION['nameErr']; ?></span> 
             </div>
 
             <!-- Nhập quê quán nhân viên  -->
@@ -39,7 +41,7 @@
 
             <!-- Validate quê quán  -->
             <div>
-            	<span class="error"><?php echo $addressErr; ?></span> 
+            	<span class="error"><?php echo $_SESSION['addressErr']; ?></span> 
             </div>
             
             <!-- Nhập phòng ban  -->
@@ -49,10 +51,12 @@
                 <select class="select-nameClass" name="name_Class">
                     <option></option>
                     <?php 
-                        $result = listClass();
-                        for ($i = 0; $i <  count($result); $i++){
+                        
+                        $result = $classrooms->listClass();
+                        foreach ($result as $row) {
+                            
                      ?>
-                    <option value="<?php echo $result[$i]->MaPB; ?>"><?php echo $result[$i]->TenPB; ?></option>
+                    <option value="<?php echo $row['MaPB']; ?>"><?php echo $row['TenPB']; ?></option>
 
                     <?php 
                         }
@@ -62,7 +66,7 @@
         
         	<!-- Validate phòng ban  -->
             <div>
-            	<span class="error"><?php echo $classErr; ?></span> 
+            	<span class="error"><?php echo $_SESSION['classErr']; ?></span> 
             </div>
 
             <!-- Nút thêm  -->
@@ -72,7 +76,7 @@
 
             <!-- Validate -->
             <div>
-                <span class="error"><?php echo $addInfo; ?></span> 
+                <span class="error"><?php echo $_SESSION['addinfo']; ?></span> 
             </div>
 
     </form>
