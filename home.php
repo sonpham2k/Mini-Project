@@ -17,7 +17,7 @@
              <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />
             <div class=".div_left">
                 <label class="userid_home">Tên đăng nhập: <?php 
-                // echo $_COOKIE['user']; 
+                echo $_COOKIE['user']; 
             ?> </label>
             </div>
 

@@ -61,7 +61,7 @@
             <div>
                 <label class="class-add"> Phòng ban </label>
                <select class="select-nameClass" name="class_update">
-                    <option value="<?php echo $_SESSION['classid']; ?>"><?php echo $_SESSION['class']; ?></option>
+                    <option value="<?php if(isset($_SESSION['classid'])){ echo $_SESSION['classid'];} ?>"><?php echo $_SESSION['class']; ?></option>
                     <?php 
                         
                         $result = $classrooms->listClass();

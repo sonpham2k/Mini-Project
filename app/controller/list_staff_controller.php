@@ -7,16 +7,15 @@ class listStaff{
 		$name = $address = $class = "";
 		$co = 0;
 		$_SESSION['count']= "";
-		$resultSearchStaff ="";
 		$countIn = 0;
 		$ad = "admin01";
 		$pass = "e10adc3949ba59abbe56e057f20f883e";
 
 		//check login
 		
-	    // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-	    //     header("Location:../../login.php");
-	    // }
+		if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
+	        header("Location:../../login.php");
+	    }
 
 	    //Tìm kiếm thông tin
 		if(isset($_REQUEST['btn_search'])){
@@ -28,21 +27,6 @@ class listStaff{
 
 		require_once '../model/staff.php';
 		$_SESSION['resultSearch'] = $staff->searchStaff($name, $address, $class);
-		
-		require_once '../model/logins.php';
-		$result = $logins->checkAdmin($ad, $pass);
-		foreach($result as $count){
-			$countIn++;
-		}
-
-		if ($countIn > 0) {
-			$_SESSION['count'] = "D";
-			
-		} else {
-			$_SESSION['count'] = "S";
-			
-		}
-
 
 
 		//Trả về mã nhân viên lớn nhất

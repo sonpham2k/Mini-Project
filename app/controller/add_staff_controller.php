@@ -9,7 +9,7 @@ class addStaff{
 
 		//Check login
 	    
-	    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+	    if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
 	        header("Location:../../login.php");
 	    }
 		

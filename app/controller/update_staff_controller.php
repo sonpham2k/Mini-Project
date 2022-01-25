@@ -12,7 +12,7 @@ class updateStaff{
 		$acceptUpdate = true;
 
 		//Check Login
-	    if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
+		if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
 	        header("Location:../../login.php");
 	    }
 
@@ -20,8 +20,6 @@ class updateStaff{
 	    if(isset($_GET['num'])){
 	    	$number = $_GET['num'];
 	    }
-
-	    // $_SESSION['number'] = $number;
 
 	    //Trả về kết quả truy vấn tìm nhân viên cần sửa
 	    require_once '../model/staff.php';

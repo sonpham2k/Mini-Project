@@ -9,7 +9,7 @@
 <body>
 	<body>
         <?php 
-            require_once 'app/controller/login_admins_controller.php';    
+            require_once './app/controller/login_admins_controller.php';    
             echo $_SESSION['checkAD'];  
         ?>
     <form action='' method='POST'>
@@ -17,8 +17,14 @@
             <div>
                 <label class="userid">Tên đăng nhập </label>
                 <input type="text" class="userid-input" name="user_id" size="30" 
+                value = "<?php if(isset($_COOKIE['user_login'])){
+                            echo $_COOKIE['user_login'];
+                        } ?>"
                 />
-                
+                <?php
+                error_reporting(0);
+                setcookie("user", $_POST['user_id'], time()+(60*60*24*30));
+                ?>
             </div>
 
             <div>
@@ -27,7 +33,9 @@
             <div>
                 <label class="password">Mật khẩu </label>
                 <input type="password" class="password-input" name="password" size="30" 
-                
+                value = "<?php  if(isset($_COOKIE['pass_login'])){
+                            echo $_COOKIE['pass_login'];
+                        } ?>"
                 />
             </div>
             

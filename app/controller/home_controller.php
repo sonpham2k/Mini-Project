@@ -6,13 +6,12 @@ class homeControl{
        
         if (isset($_REQUEST['logoutAction'])) {
             $_SESSION['loggedin'] = false;
-            header("Location:login.php");
-            
+            header("Location:login.php");  
         }
 
-        // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
-        //     header("Location:login.php");
-        // }
+        if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
+            header("Location:login.php");
+        }
     }
 }
 
