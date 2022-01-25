@@ -26,14 +26,9 @@
             <div>
                 <label class="name-add">Mã nhân viên </label>
                 
-                <!-- <label type="text" class="name-input-label" name="id_update"> </label> -->
-                <input type="text" class="name-input" name="id_update" size="30" value="<?php echo $_SESSION['id']; ?>"/>
+                <label type="text" class="name-input-label" name="id_update"> <?php echo $_SESSION['id']; ?> </label>
+                <!-- <input type="text" class="name-input" name="id_update" size="30" value="<?php echo $_SESSION['id']; ?>"/> -->
             </div> 
-
-            <!-- Validate mã nhân viên  -->
-            <div>
-                <span class="error"><?php echo $_SESSION['idUpdateErr']; ?></span> 
-            </div>
 
         	<!-- Nhập tên nhân viên  -->
            	<div>

@@ -60,10 +60,7 @@
 
             <!-- Đếm số thiết bị tìm thấy  -->
             <?php $resultSearch = $_SESSION['resultSearch']; ?>
-            <div class="count">
-            	Số thiết bị tìm thấy: <?php echo $_SESSION['count']; ?>
-
-        	</div>
+            
 
         	<!-- Bảng hiển thị kết quả tìm kiếm  -->
         	<table>

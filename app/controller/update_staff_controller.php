@@ -1,20 +1,25 @@
 <?php 
 
+require_once '../model/staff.php';
 class updateStaff{
 
 	public function __construct(){
-		$_SESSION['idUpdateErr'] = $_SESSION['nameUpdateErr'] = $_SESSION['addressUpdateErr'] = $_SESSION['classUpdateErr'] = $_SESSION['accept'] = "";
+
+		//Khởi tạo đối đượng nhân viên
+		$staff = new staff;
+
+		//Khởi tạo các biến
+		$_SESSION['nameUpdateErr'] = $_SESSION['addressUpdateErr'] = $_SESSION['classUpdateErr'] = $_SESSION['accept'] = "";
 		$_SESSION['number'] = "";
 		$_SESSION['id'] = $_SESSION['name'] = $_SESSION['address'] = $_SESSION['class'] = $_SESSION['class']  = "";
 		$idUpdate = $nameUpdate = $addressUpdate = $classUpdate = "";
-		$check = "";
-		$number = $info = "";
+		$number = "";
 		$acceptUpdate = true;
 
 		//Check Login
 		if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
-	        header("Location:../../login.php");
-	    }
+            header("Location:../../login.php");
+        }
 
 	    //Lấy mã nhân viên cần sửa
 	    if(isset($_GET['num'])){
@@ -22,7 +27,6 @@ class updateStaff{
 	    }
 
 	    //Trả về kết quả truy vấn tìm nhân viên cần sửa
-	    require_once '../model/staff.php';
 	    $updateStaffOne = $staff->giveStaff($number);
 	    foreach($updateStaffOne as $rock){
 			$_SESSION['id'] = $rock['MaNV'];
@@ -34,15 +38,8 @@ class updateStaff{
 
 	    //Nút sửa thông tin nhân viên
 		if (isset($_REQUEST['btn-update'])) {
-			
-			if(empty($_REQUEST['id_update'])){
-				$_SESSION['idUpdateErr'] = "Hãy nhập mã nhân viên";
-				$acceptUpdate = false;
-			} else {
-				$idUpdate = $_REQUEST['id_update'];
-			}
+			$idUpdate = $_SESSION['id'];
 
-			
 			if(empty($_REQUEST['name_update'])){
 				$_SESSION['nameUpdateErr'] = "Hãy nhập tên nhân viên";
 				$acceptUpdate = false;
@@ -65,7 +62,6 @@ class updateStaff{
 			}
 				
 			if($acceptUpdate){
-				require_once '../model/staff.php';
 				$staff->updateNV($idUpdate, $nameUpdate, $addressUpdate, $classUpdate);
 				$_SESSION['accept'] = "Sửa thành công";
 			}
@@ -75,6 +71,5 @@ class updateStaff{
 }
 
 $updateStaff = new updateStaff;
-require_once '../view/update_staff_view.php';
 
 ?>

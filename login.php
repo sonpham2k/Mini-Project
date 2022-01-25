@@ -9,27 +9,26 @@
 <body>
 	<body>
         <?php 
-            require_once './app/controller/login_admins_controller.php';    
-            echo $_SESSION['checkAD'];  
+            require_once 'app/controller/login_admins_controller.php';    
         ?>
     <form action='' method='POST'>
-        
+
+            <!-- Nhập tên đăng nhập -->
             <div>
                 <label class="userid">Tên đăng nhập </label>
                 <input type="text" class="userid-input" name="user_id" size="30" 
                 value = "<?php if(isset($_COOKIE['user_login'])){
                             echo $_COOKIE['user_login'];
                         } ?>"
-                />
-                <?php
-                error_reporting(0);
-                setcookie("user", $_POST['user_id'], time()+(60*60*24*30));
-                ?>
+                /> 
             </div>
 
+            <!-- Validate tên đăng nhập -->
             <div>
                 <span class="error"><?php echo $_SESSION['nameErr']; ?></span>
             </div>
+
+            <!-- Nhập mật khẩu -->
             <div>
                 <label class="password">Mật khẩu </label>
                 <input type="password" class="password-input" name="password" size="30" 
@@ -39,15 +38,19 @@
                 />
             </div>
             
+            <!-- Validate mật khẩu -->
             <div>
                 <span class="error"><?php echo $_SESSION['passwordErr']; ?></span>
             </div>
 
+            <!-- Remember me -->
             <div>
                 <input type = "checkbox" class = "check" name = "remember" <?php if(isset($_COOKIE["user_login"])) { ?> checked <?php } ?> />
                 <label class = "remember"> Remember me </label>
 
             </div>
+
+            <!-- Nút đăng nhập  -->
             <div>
                    <input type="submit" class="btn-login" value="Đăng nhập" name="btn-login">
             </div>

@@ -1,21 +1,21 @@
 <?php 
 
+require_once '../model/staff.php';
 class listStaff{
 
 	public function __construct(){
 
+		//Khởi tạo đối tượng nhân viên
+		$staff = new staff;
+
+		//Khởi tạo biến
 		$name = $address = $class = "";
-		$co = 0;
 		$_SESSION['count']= "";
-		$countIn = 0;
-		$ad = "admin01";
-		$pass = "e10adc3949ba59abbe56e057f20f883e";
 
 		//check login
-		
 		if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
-	        header("Location:../../login.php");
-	    }
+            header("Location:../../login.php");
+        }
 
 	    //Tìm kiếm thông tin
 		if(isset($_REQUEST['btn_search'])){
@@ -25,12 +25,11 @@ class listStaff{
 			$class = $_REQUEST['class_search'];
 		}
 
-		require_once '../model/staff.php';
+		//Lưu tất cả những nhân viên được tìm kiếm
 		$_SESSION['resultSearch'] = $staff->searchStaff($name, $address, $class);
 
 
 		//Trả về mã nhân viên lớn nhất
-
 		$lastMa = $staff->lastMaNV();
 		foreach($lastMa as $rom){
 			$numlast = $rom['MaNV'];
@@ -56,6 +55,6 @@ class listStaff{
 }
 
 $listStaff = new listStaff;
-require_once '../view/list_staff_view.php';
+
 	
 ?>

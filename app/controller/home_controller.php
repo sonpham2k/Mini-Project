@@ -1,14 +1,15 @@
 <?php
-
 class homeControl{
         
     public function __construct(){
        
+        //Thực thi nút log out
         if (isset($_REQUEST['logoutAction'])) {
-            $_SESSION['loggedin'] = false;
+            setcookie("login", false, time()+(60*60*24*30));
             header("Location:login.php");  
         }
 
+        //Check login
         if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
             header("Location:login.php");
         }
@@ -16,6 +17,5 @@ class homeControl{
 }
 
 $homeControl = new homeControl;
-require_once 'home.php';
 
 ?>

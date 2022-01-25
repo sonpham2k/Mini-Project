@@ -14,24 +14,27 @@
     
     ?>
     <form action='' method='POST'>
-             <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />
+            
+            <!-- Nút log out -->
+            <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />
+
+            <!-- Tên đăng nhập -->
             <div class=".div_left">
                 <label class="userid_home">Tên đăng nhập: <?php 
                 echo $_COOKIE['user']; 
             ?> </label>
             </div>
 
+            <!-- Link đến trang thêm nhân viên -->
             <div class="link">
                 <a href="app/view/add_staff_view.php"> Thêm nhân viên </a>
             </div>
 
+            <!-- Link đến trang tìm kiếm nhân viên -->
             <div class="link">
                 <a href="app/view/list_staff_view.php"> Tìm kiếm nhân viên </a>
             </div>
-            
-            <div class="link">
-                <a href="app/view/update_staff_view.php"> Sửa thông tin nhân viên </a>
-            </div>
+           
     </form>	
 </body>
 </html>

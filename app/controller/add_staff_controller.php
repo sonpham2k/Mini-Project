@@ -1,7 +1,13 @@
 <?php 
 
+require_once '../model/staff.php';
 class addStaff{
 	public function __construct(){
+
+		//Khởi tạo biến staff
+		$staff = new staff;
+
+		//Các biến 
 		$_SESSION['nameErr'] = $_SESSION['addressErr'] = $_SESSION['classErr'] = "";
 		$name = $address = $class = "";
 		$_SESSION['addinfo'] ="";
@@ -10,8 +16,8 @@ class addStaff{
 		//Check login
 	    
 	    if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
-	        header("Location:../../login.php");
-	    }
+            header("Location:../../login.php");
+        }
 		
 		//Nút thêm nhân viên
 		if(isset($_REQUEST['btn-add'])){
@@ -38,7 +44,6 @@ class addStaff{
 			}
 
 			if($acceptAdd){
-				require_once '../model/staff.php';
 				$staff->addStaff($name, $address, $class);
 				$_SESSION['addinfo'] = "Thêm thành công";
 			}
@@ -47,6 +52,5 @@ class addStaff{
 }
 
 $addStaff = new addStaff;
-require_once '../view/add_staff_view.php';
 
 ?>
