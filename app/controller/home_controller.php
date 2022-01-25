@@ -3,11 +3,11 @@
 class homeControl{
         
     public function __construct(){
-        $_SESSION['demo']="123";
+       
         if (isset($_REQUEST['logoutAction'])) {
-            // $_SESSION['loggedin'] = false;
-            // header("Location:login.php");
-            // $_SESSION['demo']="123";
+            $_SESSION['loggedin'] = false;
+            header("Location:login.php");
+            
         }
 
         // if (!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {
@@ -17,6 +17,6 @@ class homeControl{
 }
 
 $homeControl = new homeControl;
-// require_once '../../home.php';
+require_once 'home.php';
 
 ?>

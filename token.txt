@@ -1,1 +1,11 @@
-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
+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
+
+ value = "<?php if(isset($_COOKIE['user_login'])){
+                            echo $_COOKIE['user_login'];
+                        } ?>"
+
+<?php setcookie("user", $_POST['user_id'], time()+(60*60*24*30)); ?>
+
+                        value = "<?php  if(isset($_COOKIE['pass_login'])){
+                            echo $_COOKIE['pass_login'];
+                        } ?>"

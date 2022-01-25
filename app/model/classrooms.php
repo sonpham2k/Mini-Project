@@ -13,6 +13,6 @@ class classrooms extends database{
 	}
 }
 
-$classrooms = new classrooms();
+$classrooms = new classrooms;
 
 ?>

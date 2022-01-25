@@ -11,7 +11,7 @@
 <body>
     <?php
     require_once 'app/controller/home_controller.php';
-    echo $_SESSION['demo'];
+    
     ?>
     <form action='' method='POST'>
              <input type="submit" name="logoutAction" value="Logout" class="alignright" id="btnLogout" />

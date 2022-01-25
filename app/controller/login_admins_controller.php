@@ -7,6 +7,8 @@ class loginControl{
 		$_SESSION['nameErr'] = $_SESSION['passwordErr'] = "";
 		$name = $password = "";
 		$loginHome = true;
+		$countIn = 0;
+		$_SESSION['checkAD'] = "";
 
 
 		if(isset($_REQUEST['btn-login'])){
@@ -25,31 +27,38 @@ class loginControl{
 		        $password = md5($_REQUEST["password"]);
 		    }
 
-
 		    if ($loginHome) {
-		    	require_once '../model/logins.php';
-		        if ($login->checkAdmin($name, $password)) {
-			        if(isset($_REQUEST['remember'])){
-			        	setcookie("user_login", $_REQUEST['user_id'], time()+(60*60*24*30));
-			        	setcookie("pass_login", $_REQUEST["password"], time()+(60*60*24*30));
-			        } else {
-			        	if(isset($_COOKIE['user_login'])){
-			        		setcookie("user_login", "");
-			        	}
-			        	if(isset($_COOKIE['pass_login'])){
-			        		setcookie("pass_login", "");
-			        	}
-			        }
-		            header("Location:home.php");
-		        } else {
-		            $passwordErr =  " Tên đăng nhập hoặc mật khẩu không đúng";
-		        }
+		    	include_once '../model/logins.php';	    	
+		    	$result = $logins->checkAdmin2($name, $password);
+
+		  //   	foreach($result as $count){
+				// 		$countIn++;
+				// }
+
+				$_SESSION['checkAD'] = $result;
+
+		        // if ($check) {
+			       //  if(isset($_REQUEST['remember'])){
+			       //  	setcookie("user_login", $_REQUEST['user_id'], time()+(60*60*24*30));
+			       //  	setcookie("pass_login", $_REQUEST["password"], time()+(60*60*24*30));
+			       //  } else {
+			       //  	if(isset($_COOKIE['user_login'])){
+			       //  		setcookie("user_login", "");
+			       //  	}
+			       //  	if(isset($_COOKIE['pass_login'])){
+			       //  		setcookie("pass_login", "");
+			       //  	}
+			       //  }
+		            // header("Location:login.php");
+		        // } else {
+		        //     $passwordErr =  " Tên đăng nhập hoặc mật khẩu không đúng";
+		        // }
 		    }
 		}
 	}	
 }
 
 $loginControl = new loginControl;
-require_once '../../login.php';
+require_once 'login.php';
 
 ?>
