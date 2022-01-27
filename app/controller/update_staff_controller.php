@@ -17,7 +17,7 @@ class updateStaff{
 		$acceptUpdate = true;
 
 		//Check Login
-		if (!(isset($_COOKIE['login']) && $_COOKIE['login'] == true)) {
+		if (!isset($_COOKIE['logined'])) {
             header("Location:../../login.php");
         }
 
