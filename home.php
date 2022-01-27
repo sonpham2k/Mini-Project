@@ -24,7 +24,7 @@
                     <!-- Tên đăng nhập -->
                     <p class="form__title">Tên đăng nhập: 
                         <?php 
-                            echo $_COOKIE['user_login']; 
+                            echo $_SESSION['username']; 
                         ?> 
                     </p>
 

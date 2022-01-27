@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require_once '../model/staff.php';
 class addStaff{
 	public function __construct(){
@@ -14,10 +14,9 @@ class addStaff{
 		$acceptAdd = true;
 
 		//Check login
-	    
-		if (!isset($_COOKIE['logined'])) {
-            header("Location:../../login.php");
-        }
+        if (!isset($_SESSION['logined'])) {
+			header("Location:../../login.php");
+		} 
 		
 		//Nút thêm nhân viên
 		if(isset($_REQUEST['btn-add'])){

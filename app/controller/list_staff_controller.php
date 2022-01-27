@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require_once '../model/staff.php';
 class listStaff{
 
@@ -12,10 +12,10 @@ class listStaff{
 		$name = $address = $class = "";
 		$_SESSION['count']= "";
 
-		//check login
-		if (!isset($_COOKIE['logined'])) {
-            header("Location:../../login.php");
-        }
+		//Check login
+        if (!isset($_SESSION['logined'])) {
+			header("Location:../../login.php");
+		} 
 
 	    //Tìm kiếm thông tin
 		if(isset($_REQUEST['btn_search'])){

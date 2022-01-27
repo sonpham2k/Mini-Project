@@ -17,9 +17,6 @@ class logins extends database{
 		} else {
 			return false;
 		}
-
-		
-		
 	}
 
 }

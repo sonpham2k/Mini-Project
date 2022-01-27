@@ -12,7 +12,7 @@
 </head>
 <body>
         <?php 
-            require_once 'app/controller/login_admins_controller.php';    
+            require_once 'app/controller/login_admins_controller.php';   
         ?>
 
     <div class="form__box">

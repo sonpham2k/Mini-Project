@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 require_once '../model/staff.php';
 class updateStaff{
 
@@ -16,10 +16,10 @@ class updateStaff{
 		$number = "";
 		$acceptUpdate = true;
 
-		//Check Login
-		if (!isset($_COOKIE['logined'])) {
-            header("Location:../../login.php");
-        }
+		//Check login
+        if (!isset($_SESSION['logined'])) {
+			header("Location:../../login.php");
+		} 
 
 	    //Lấy mã nhân viên cần sửa
 	    if(isset($_GET['num'])){
