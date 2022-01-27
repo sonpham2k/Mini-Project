@@ -63,7 +63,7 @@ class updateStaff{
 				
 			if($acceptUpdate){
 				$staff->updateNV($idUpdate, $nameUpdate, $addressUpdate, $classUpdate);
-				$_SESSION['accept'] = "Sửa thành công";
+				header("Location:update_staff_view.php?num=$number");
 			}
 			
 		}

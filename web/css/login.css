@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Monospaced sans-serif;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    font-size: 15px;
+}
+
+
+body {
+  background: linear-gradient(to right, #92f76a, #a2fad8);
+}
+
+
+input {
+    border: 1px solid #385d8a;
+    font-size: 1.3rem;
+    font-weight: 100;
+    padding: 5px 10px;
+    width: 200px;  
+    margin-right: 55px;
+    font-family: 'Times New Roman';
+    cursor: pointer;
+}
+
+div {
+    margin: 10px;
+}
+
+.btn-login {
+    width: 167px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-family: 'Times New Roman';
+    font-weight: 1;
+    background: #4f81bd;
+    border: 1px solid #385d8a;
+    margin-top: 30px;
+
+}
+
+.error {
+  color: #ff3c33;
+}
+
+
+.check {
+    width: 20px;
+    margin: 5px;
+}
+
+
+.form__box {
+  margin: 50px auto;
+  position: relative;
+  width: 1000px;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 1px 4px 22px -8px #0004;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+.form__left {
+  width: 50%;
+}
+.form__padding {
+  width: 230px;
+  height: 230px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  margin: 0 auto;
+  line-height: 210px;
+  position: relative;
+}
+.form__image {
+  max-width:100%;
+  width: 90%;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form__right {
+  width: 50%;
+}
+.form__padding-right {
+  padding-right: 30px;
+}
+.form__title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form__group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+.form__group label {
+  position: absolute;
+  margin-left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[type='text'],
+input[type='password'],
+input[type='submit']{
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  height: 38px;
+}
+input[type='text'],
+input[type='password']{
+  padding: 7px 40px;
+  background: #f2f2f2;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  outline: none;
+  border: 1.5px solid #dedddd;
+}
+
+.form__remember {
+  margin-bottom: 20px;
+}
+
+input[type='submit'] {
+  background: #22dde3;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 25px;
+}
+input[type='submit']:hover {
+  background: #3fffb5;
+}
+
+input:after {
+  position: absolute;
+}
+
+a {
+  color: #71df88;
+  position: relative;
+}
+a:hover {
+  color: #ff3f70;
+}
+
