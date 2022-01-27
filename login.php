@@ -17,7 +17,7 @@
 
     <div class="form__box">
         <div class="form__left">
-            <div class="form__padding"><img class="form__image" src="image/logo-sun.png"/></div>
+            <div class="form__padding"><img class="form__image" src="https://static.ybox.vn/2019/6/1/1560786992404-1555688532152-1552020252934-1548909586196-700X400.png"/></div>
         </div>
         <div class="form__right">
             <div class="form__padding-right">

@@ -1,6 +1,6 @@
 <?php 
 
-require (dirname(dirname(__FILE__)). '../common/connectDB.php');
+require (dirname(dirname(__FILE__)). '/common/connectDB.php');
 
 class logins extends database{
 	public function checkAdmin($name, $pass){

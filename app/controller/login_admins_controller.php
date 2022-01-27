@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require (dirname(dirname(__FILE__)). '../model/logins.php');
+require (dirname(dirname(__FILE__)). '/model/logins.php');
 
 
 class loginControl{
