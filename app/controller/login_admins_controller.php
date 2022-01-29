@@ -29,20 +29,31 @@ class loginControl{
             // Thực thi nút đăng nhập
             if (isset($_REQUEST['btn-login'])) {
 
+                $user = htmlspecialchars($_REQUEST['user_id']);
+                $pass = htmlspecialchars($_REQUEST['password']);
+
+
                 // Kiểm tra tên đăng nhập
-                if (empty($_REQUEST['user_id'])) {
+                if (empty($user)) {
                     $_SESSION['nameErr'] = "Hãy nhập tên đăng nhập";
                     $loginHome = false;
+                } else if(strlen($user)>7) {
+                    $_SESSION['nameErr'] = "Hãy nhập tên đăng nhập tối đa 7 kí tự";
+                    $loginHome = false;
+                    
                 } else {
-                    $name = $_REQUEST['user_id'];
+                    $name = $user;
                 }
 
                 // Kiểm tra password
-                if (empty($_REQUEST["password"])) {
-                    $_SESSION['passwordErr'] = "Hãy nhập password";
+                if (empty($pass)) {
+                    $_SESSION['passwordErr'] = "Hãy nhập mật khẩu";
+                    $loginHome = false;
+                } else if (strlen($pass)<6) {
+                    $_SESSION['passwordErr'] = "Hãy nhập mật khẩu tối thiếu 6 kí tự";
                     $loginHome = false;
                 } else {
-                    $password = md5($_REQUEST["password"]);
+                    $password = md5($pass);
                 }
 
                 //Sau khi không có validate, chuyển sang trạng thái kiểm tra đăng nhập

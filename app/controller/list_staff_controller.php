@@ -20,9 +20,9 @@ class listStaff{
 	    //Tìm kiếm thông tin
 		if(isset($_REQUEST['btn_search'])){
 
-			$name = $_REQUEST['name_search'];
-			$address = $_REQUEST['address_search'];
-			$class = $_REQUEST['class_search'];
+			$name = htmlspecialchars($_REQUEST['name_search']);
+			$address = htmlspecialchars($_REQUEST['address_search']);
+			$class = htmlspecialchars($_REQUEST['class_search']);
 		}
 
 		//Lưu tất cả những nhân viên được tìm kiếm

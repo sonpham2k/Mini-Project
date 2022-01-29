@@ -1,12 +1,14 @@
 <?php 
 session_start();
 require_once '../model/staff.php';
+require_once '../model/classrooms.php';
 class updateStaff{
 
 	public function __construct(){
 
 		//Khởi tạo đối đượng nhân viên
 		$staff = new staff;
+		$classroom = new classrooms;
 
 		//Khởi tạo các biến
 		$_SESSION['nameUpdateErr'] = $_SESSION['addressUpdateErr'] = $_SESSION['classUpdateErr'] = $_SESSION['accept'] = "";
@@ -40,25 +42,38 @@ class updateStaff{
 		if (isset($_REQUEST['btn-update'])) {
 			$idUpdate = $_SESSION['id'];
 
-			if(empty($_REQUEST['name_update'])){
+			$nameInput = htmlspecialchars($_REQUEST['name_update']);
+			$addressInput = htmlspecialchars($_REQUEST['address_update']);
+			$classInput = htmlspecialchars($_REQUEST['class_update']);
+
+			if(empty($nameInput)){
 				$_SESSION['nameUpdateErr'] = "Hãy nhập tên nhân viên";
 				$acceptUpdate = false;
+			} else if(strlen($nameInput)>50){
+				$_SESSION['nameUpdateErr'] = "Hãy nhập tên nhân viên tối đa 50 kí tự";
+				$acceptUpdate = false;
 			} else {
-				$nameUpdate = $_REQUEST['name_update'];
+				$nameUpdate = $nameInput;
 			}
 
-			if(empty($_REQUEST['address_update'])){
+			if(empty($addressInput)){
 				$_SESSION['addressUpdateErr'] = "Hãy nhập quê quán nhân viên";
 				$acceptUpdate = false;
-			} else {
-				$addressUpdate = $_REQUEST['address_update'];
-			}
-
-			if(empty($_REQUEST['class_update'])){
-				$_SESSION['classUpdateErr'] = "Hãy nhập phòng nhân viên";
+			} else if(strlen($addressInput)>50){
+				$_SESSION['addressUpdateErr'] = "Hãy nhập quê quán tối đa 50 kí tự";
 				$acceptUpdate = false;
 			} else {
-				$classUpdate = $_REQUEST['class_update'];
+				$addressUpdate = $addressInput;
+			}
+
+			if(empty($classInput)){
+				$_SESSION['classUpdateErr'] = "Hãy nhập phòng nhân viên";
+				$acceptUpdate = false;
+			} else if($classroom->checkClass($classInput)){
+				$_SESSION['classUpdateErr'] = "Nhập phòng ban không hợp lệ";
+				$acceptUpdate = false;
+			} else {
+				$classUpdate = $classInput;
 			}
 				
 			if($acceptUpdate){

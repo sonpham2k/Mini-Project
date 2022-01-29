@@ -30,13 +30,13 @@
                     <!-- Mã nhân viên -->
                     <div class="form-floating mb-3">
                         <label for="floatingInput">Mã nhân viên</label>
-                        <label type="texr" class="form-control" id="floatingInput" placeholder=""><?php echo $_SESSION['id']; ?></label>                  
+                        <label type="texr" class="form-control" id="floatingInput"><?php echo $_SESSION['id']; ?></label>                  
                     </div>
 
                     <!-- Họ và tên -->
                     <div class="form-floating mb-3">
                         <label for="floatingInput">Họ và tên</label>
-                        <input type="texr" class="form-control" id="floatingInput" name="name_update" placeholder="" value="<?php echo $_SESSION['name']; ?>">                   
+                        <input type="texr" class="form-control" id="floatingInput" name="name_update" placeholder="tối đa 50 kí tự" value="<?php echo $_SESSION['name']; ?>">                   
                     </div>
 
                      <!-- Validate nhân viên  -->
@@ -47,7 +47,7 @@
                     <!-- Quê quán -->
                     <div class="form-floating mb-3">
                         <label for="floatingInput">Quê quán</label>
-                        <input type="texr" class="form-control" id="floatingInput" name="address_update" placeholder="" value="<?php echo $_SESSION['address']; ?>">                   
+                        <input type="texr" class="form-control" id="floatingInput" name="address_update" placeholder="tối đa 50 kí tự" value="<?php echo $_SESSION['address']; ?>">                   
                     </div>
                     
                     <!-- Validate quê quán  -->

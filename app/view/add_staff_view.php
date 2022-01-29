@@ -30,7 +30,7 @@
                     <!-- Họ và tên -->
                     <div class="form-floating mb-3">
                         <label for="floatingInput">Họ và tên</label>
-                        <input type="texr" class="form-control" id="floatingInput" name="name_input" placeholder="">                   
+                        <input type="texr" class="form-control" id="floatingInput" name="name_input" placeholder="tối đa 50 kí tự">                   
                     </div>
 
                      <!-- Validate nhân viên  -->
@@ -41,7 +41,7 @@
                     <!-- Quê quán -->
                     <div class="form-floating mb-3">
                         <label for="floatingInput">Quê quán</label>
-                        <input type="texr" class="form-control" id="floatingInput" name="address_add" placeholder="">                   
+                        <input type="texr" class="form-control" id="floatingInput" name="address_add" placeholder="tối đa 50 kí tự">                   
                     </div>
                     
                     <!-- Validate quê quán  -->

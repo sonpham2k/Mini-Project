@@ -5,10 +5,8 @@ class homeControl{
         
     public function __construct(){
         
-        // $login = new logins;
         //Thực thi nút log out
         if (isset($_REQUEST['logoutAction'])) {
-            // $login->deletetoken($_COOKIE['user_login']);
             setcookie("user_login", '', time()-(60*60*24*30));
 			setcookie("pass_login", '', time()-(60*60*24*30));
             unset($_SESSION['logined']);
